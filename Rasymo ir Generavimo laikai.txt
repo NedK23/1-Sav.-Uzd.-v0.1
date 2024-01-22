@@ -1,14 +1,36 @@
 Pagal Replit platformos kurimo ir skaitymo laika:
 
-1000: Duomenu nuskaitymo laikas: 0.2886 seconds
-Failo Irašymo laikas: 0.2684 seconds
-10000: Duomenu nuskaitymo laikas: 3.8596 seconds
-Failo Irašymo laikas: 0.89625 seconds
-100000: Duomenu nuskaitymo laikas: 31.5799 seconds
-Failo Irašymo laikas: 4.79717 seconds
-1000000:Duomenu nuskaitymo laikas: 273.507 seconds *
-Failo Irašymo laikas: 40.1201 seconds
-10000000:Duomenu nuskaitymo laikas: apie ~700.000 seconds
+1000:
+Duomenu generavimo laikas: 0.2684 seconds
+Išvedimas į failus laikas: 0.09236 seconds
+10000: 
+Duomenu generavimo laikas:: 3.8596 seconds
+Išvedimas į failus laikas: 0.89625 seconds
+100000: 
+Duomenu generavimo laikas:: 31.5799 seconds
+Išvedimas į failus laikas: 4.79717 seconds
+1000000:
+Duomenu generavimo laikas:: 273.507 seconds 
+Išvedimas į failus laikas: 40.1201 seconds
+10000000:
+Duomenu generavimo laikas: apie ~700.000 seconds
+
 Replit svetainei pritruksta atminties ir užsikrašina,
 tad failo negaliu segeneruoti :)
+
 Failo Irašymo laikas: ~120.000 seconds
+
+studentai1000:
+Duomenu skaitymo laikas: 55.4919 seconds
+Rūšiavimo laikas: 0.452547 seconds
+Išvedimas į failus laikas: 0.452547 seconds
+
+studentai2000:
+Duomenu skaitymo laikas: 221.126 seconds
+Rūšiavimo laikas: 2.75927 seconds
+Išvedimas į failus laikas: 2.75927 seconds
+
+studentai5000:
+Duomenu skaitymo laikas: 1251.66 seconds
+Rūšiavimo laikas: 18.7121 seconds
+Išvedimas į failus laikas: 18.7121 seconds

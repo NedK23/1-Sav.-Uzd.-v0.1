@@ -27,13 +27,17 @@ int main() {
       std::cerr << "Nepavyko atidaryti failo." << std::endl;
       return 1;
     }
-    SkaitytiIsFailo(failoVardas, studentai);
+    std::chrono::duration<double> SortingTime;
+    std::chrono::duration<double> FileEnterTime;
+    SkaitytiIsFailo(failoVardas, studentai, SortingTime, FileEnterTime);
     std::sort(studentai.begin(), studentai.end());
     failas.close();
 
     auto DataReadingEnd = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> DataReadingTime = DataReadingEnd - DataReadingStart;
     std::cout << "Duomenu skaitymo laikas: " << DataReadingTime.count() << " seconds" << std::endl;
+    std::cout << "Rūšiavimo laikas: " << SortingTime.count() << " seconds" << std::endl;
+    std::cout << "Išvedimas į failus laikas: " << SortingTime.count() << " seconds" << std::endl;
     
   } else {
     std::cout << "Automatiškai generuoti studentus? (1 = Y/ 2 = N): ";

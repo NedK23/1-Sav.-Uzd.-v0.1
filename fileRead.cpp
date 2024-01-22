@@ -1,13 +1,11 @@
 #include "fileRead.h"
 
-void SkaitytiIsFailo(std::string failoVardas, std::vector<Studentas> &grupe) {
+void SkaitytiIsFailo(std::string failoVardas, std::vector<Studentas> &grupe, std::chrono::duration<double> &SortingTime, std::chrono::duration<double> &FileEnterTime) {
   std::ifstream failas(failoVardas);
   if (!failas.is_open()) {
     std::cerr << "Nepavyko atidaryti failo." << std::endl;
     return;
   }
-
-
   std::string header;
   getline(failas, header);
 
@@ -27,8 +25,7 @@ void SkaitytiIsFailo(std::string failoVardas, std::vector<Studentas> &grupe) {
 
       int n;
       my_buffer >> n;
-      tempStudent.NustatytiNamuDarbuSkaiciu(n);
-
+      tempStudent.SetNamuDarbuNum(n);
       std::vector<int> laikPaz;
       int pazymys;
       while (my_buffer >> pazymys) {
@@ -45,10 +42,52 @@ void SkaitytiIsFailo(std::string failoVardas, std::vector<Studentas> &grupe) {
         tempStudent.SetNamuDarbai(laikPaz);
         tempStudent.SkaiciuotiGalutiniBala();
         grupe.push_back(tempStudent);
+        cout << tempStudent;
+
+        std::vector<Studentas> MinStudentai;
+        std::vector<Studentas> MaxStudentai;
+        auto SortingStart = std::chrono::high_resolution_clock::now();
+        for (auto& tempStudent : grupe) {
+          if (tempStudent.GetGalutinis() < 5.0) {
+                MinStudentai.push_back(tempStudent);
+          }
+          else {
+                MaxStudentai.push_back(tempStudent);
+          }
+        }
+        auto SortingEnd = std::chrono::high_resolution_clock::now();
+        SortingTime += SortingEnd - SortingStart;
+
+        auto FileEnterStart = std::chrono::high_resolution_clock::now();
+        std::ofstream MinStudentaiFile("MinStudentai.txt");
+        for (const auto& tempStudent : MinStudentai) {
+            MinStudentaiFile << tempStudent;
+        }
+            MinStudentaiFile.close();
+
+        std::ofstream MaxStudentaiFile("MaxStudentai.txt");
+        for (const auto& tempStudent : MaxStudentai) {
+            MaxStudentaiFile << tempStudent;
+        }
+            MinStudentaiFile.close();
+
+        std::ofstream OpenResult("Res.txt");
+        for (auto& tempStudent : grupe) {
+              OpenResult << tempStudent;
+        }
+            OpenResult.close(); 
+
+          auto FileEnterEnd = std::chrono::high_resolution_clock::now();
+          FileEnterTime += FileEnterEnd - FileEnterStart;
+
       }
+
+
+
     } else {
       break;
     }
   }
   failas.close();
+
 }

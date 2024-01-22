@@ -7,6 +7,7 @@
 #include <random>
 #include <vector>
 #include <chrono>
+#include <numeric>
 
 using std::cin;
 using std::cout;
