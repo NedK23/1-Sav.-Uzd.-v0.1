@@ -5,3 +5,5 @@ B2     Pavardė2    7    10    8    5    4    6
 C3     Pavardė3    2    9     10   6    10   9
 D4     Pavardė4    7    10    8    5    4    6
 E5     Pavardė5    8    4     10   8    10   9
+F6     Pavardė6    8    5     6    7    10   3
+G7     Pavardė7    2    2     3    8    4    9

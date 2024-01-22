@@ -6,6 +6,7 @@
 #include <iostream>
 #include <random>
 #include <vector>
+#include <chrono>
 
 using std::cin;
 using std::cout;
@@ -22,6 +23,8 @@ private:
   vector<int> namuDarbai;
   int egzaminas;
   double galutinis;
+  double totalTimeSum = 0.0;
+
 
 public:
   Studentas();
@@ -32,20 +35,27 @@ public:
   friend std::istream& operator>>(std::istream& in, Studentas& a);
 
   
-  void NustatytiNamuDarbuSkaiciu(int skaicius) { namuDarbai.resize(skaicius); };
+  void SetNamuDarbuNum(int skaicius) { namuDarbai.resize(skaicius); };
   inline void SetVardas(std::string V) { vardas = V; };
   inline void SetPavarde(std::string P) { pavarde = P; };
   inline void SetNamuDarbai(std::vector<int> ND) { namuDarbai = ND; };
   inline void SetEgzaminas(int E) { egzaminas = E; };
+  vector<int>& GetNamuDarbai() { return namuDarbai; };
+  int GetGalutinis() { return galutinis; };
   string GetVardas() const { return vardas; };
   friend bool operator<(const Studentas &A, const Studentas &B) { return A.GetVardas() < B.GetVardas(); };
+using hrClock = std::chrono::high_resolution_clock;
   
 
   ~Studentas();
 
-  int ExptSkaiciuChecker(int &Pasirinkimas);
+  void GeneruotiStudenta(Studentas &studentas);
 
-  void DuomenųĮvedimas(int namuDarbųSkaicius, bool generuotiBalus);
+  int ExptSkaiciuChecker(int &Pasirinkimas, int Skaicius);
+
+  void DuomenųĮvedimas(int namuDarbųSkaicius, bool generuotiSkc);
+
+  void OutputToUserFile(const std::string& fileName, const std::vector<Studentas>& studentai);
 
   void SkaiciuotiGalutiniBala();
 

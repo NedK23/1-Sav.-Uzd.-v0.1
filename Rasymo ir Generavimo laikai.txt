@@ -1,0 +1,14 @@
+Pagal Replit platformos kurimo ir skaitymo laika:
+
+1000: Duomenu nuskaitymo laikas: 0.2886 seconds
+Failo Irašymo laikas: 0.2684 seconds
+10000: Duomenu nuskaitymo laikas: 3.8596 seconds
+Failo Irašymo laikas: 0.89625 seconds
+100000: Duomenu nuskaitymo laikas: 31.5799 seconds
+Failo Irašymo laikas: 4.79717 seconds
+1000000:Duomenu nuskaitymo laikas: 273.507 seconds *
+Failo Irašymo laikas: 40.1201 seconds
+10000000:Duomenu nuskaitymo laikas: apie ~700.000 seconds
+Replit svetainei pritruksta atminties ir užsikrašina,
+tad failo negaliu segeneruoti :)
+Failo Irašymo laikas: ~120.000 seconds
