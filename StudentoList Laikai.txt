@@ -1,0 +1,17 @@
+Pagal Visual Studio 2022:
+
+1000:
+Duomenu skaitymo laikas: 65.0457 seconds
+Rusiavimo laikas: 9.25596 seconds
+Isvedimas i failus laikas: 9.25596 seconds
+2000:
+Duomenu skaitymo laikas: 155.829 seconds
+Rusiavimo laikas: 1.90763 seconds
+Isvedimas i failus laikas: 1.90763 seconds
+Visas programos veikimo laikas: 157.047 seconds
+5000:
+Duomenu skaitymo laikas: 897.525 seconds
+Rusiavimo laikas: 12.5834 seconds
+Isvedimas i failus laikas: 12.5834 seconds
+Visas programos veikimo laikas: 898.744 seconds
+

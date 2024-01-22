@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <algorithm>
 #include <fstream>
@@ -6,6 +6,9 @@
 #include <iostream>
 #include <random>
 #include <vector>
+#include <chrono>
+#include <list>
+#include <numeric>
 
 using std::cin;
 using std::cout;
@@ -17,42 +20,53 @@ using std::vector;
 
 class Studentas {
 private:
-  string vardas;
-  string pavarde;
-  vector<int> namuDarbai;
-  int egzaminas;
-  double galutinis;
+	string vardas;
+	string pavarde;
+	vector<int> namuDarbai;
+	int egzaminas;
+	double galutinis;
+
+
 
 public:
-  Studentas();
+	Studentas();
 
-  Studentas(const Studentas &other);
-  Studentas &operator=(const Studentas &other);
-  friend std::ostream &operator<<(std::ostream &out, const Studentas &A);
-  friend std::istream& operator>>(std::istream& in, Studentas& a);
+	Studentas(const Studentas& other);
+	Studentas& operator=(const Studentas& other);
+	friend std::ostream& operator<<(std::ostream& out, const Studentas& A);
+	friend std::istream& operator>>(std::istream& in, Studentas& a);
 
-  
-  void NustatytiNamuDarbuSkaiciu(int skaicius) { namuDarbai.resize(skaicius); };
-  inline void SetVardas(std::string V) { vardas = V; };
-  inline void SetPavarde(std::string P) { pavarde = P; };
-  inline void SetNamuDarbai(std::vector<int> ND) { namuDarbai = ND; };
-  inline void SetEgzaminas(int E) { egzaminas = E; };
-  string GetVardas() const { return vardas; };
-  friend bool operator<(const Studentas &A, const Studentas &B) { return A.GetVardas() < B.GetVardas(); };
-  
 
-  ~Studentas();
+	void SetNamuDarbuNum(int skaicius) { namuDarbai.resize(skaicius); };
+	inline void SetVardas(std::string V) { vardas = V; };
+	inline void SetPavarde(std::string P) { pavarde = P; };
+	inline void SetNamuDarbai(std::vector<int> ND) { namuDarbai = ND; };
+	inline void SetEgzaminas(int E) { egzaminas = E; };
+	vector<int>& GetNamuDarbai() { return namuDarbai; };
+	int GetGalutinis() { return galutinis; };
+	string GetVardas() const { return vardas; };
+	friend bool operator<(const Studentas& A, const Studentas& B) { return A.GetVardas() < B.GetVardas(); };
+	using hrClock = std::chrono::high_resolution_clock;
 
-  int ExptSkaiciuChecker(int &Pasirinkimas);
 
-  void DuomenųĮvedimas(int namuDarbųSkaicius, bool generuotiBalus);
 
-  void SkaiciuotiGalutiniBala();
+	~Studentas();
 
-  double Vidurkis() const;
+	void GeneruotiStudenta(Studentas& studentas);
 
-  double Mediana() const;
+	int ExptSkaiciuChecker(int& Pasirinkimas, int Skaicius);
 
-  void print(bool vidurkis) const;
+	void DuomenųĮvedimas(int namuDarbųSkaicius, bool generuotiSkc);
 
-  };
+	void OutputToUserFile(const std::string& fileName, const std::list<Studentas>& studentai);
+
+	void SkaiciuotiGalutiniBala();
+
+	double Vidurkis() const;
+
+	double Mediana() const;
+
+	void print(bool vidurkis) const;
+
+};
+
