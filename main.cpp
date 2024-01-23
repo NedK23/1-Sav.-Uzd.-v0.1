@@ -28,21 +28,19 @@ int main() {
             std::cerr << "Nepavyko atidaryti failo." << std::endl;
             return 1;
         }
-        std::chrono::duration<double> SortingTime;
-        std::chrono::duration<double> FileEnterTime;
-        SkaitytiIsFailo(failoVardas, studentai, SortingTime, FileEnterTime);
+        std::chrono::duration<double> SortingAndFileTime;
+        SkaitytiIsFailo(failoVardas, studentai, SortingAndFileTime);
         studentai.sort();
         failas.close();
 
         auto DataReadingEnd = std::chrono::high_resolution_clock::now();
         std::chrono::duration<double> DataReadingTime = DataReadingEnd - DataReadingStart;
         std::cout << "Duomenu skaitymo laikas: " << DataReadingTime.count() << " seconds" << std::endl;
-        std::cout << "Rusiavimo laikas: " << SortingTime.count() << " seconds" << std::endl;
-        std::cout << "Isvedimas i failus laikas: " << SortingTime.count() << " seconds" << std::endl;
+        std::cout << "Rusiavimo laikas ir Ivedimas i faila: " << SortingAndFileTime.count() << " seconds" << std::endl;
 
     }
     else {
-        std::cout << "Automatiškai generuoti studentus? (1 = Y/ 2 = N): ";
+        std::cout << "Automatiskai generuoti studentus? (1 = Y/ 2 = N): ";
         int Pasrk2;
         obj.ExptSkaiciuChecker(Pasrk2, 2);
 
@@ -77,7 +75,7 @@ int main() {
 
             //==============================================
             std::list<Studentas> studentaiList(studentai.begin(), studentai.end());
-            obj.OutputToUserFile(userFileName, studentaiList);
+            obj.OutputUserFile(userFileName, studentaiList);
             //==============================================
             auto FileInputEnd = std::chrono::high_resolution_clock::now();
             std::chrono::duration<double> FileInputTime = FileInputEnd - FileInputStart;

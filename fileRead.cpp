@@ -1,6 +1,6 @@
-#include "fileRead.h"
+﻿#include "fileRead.h"
 
-void SkaitytiIsFailo(std::string failoVardas, std::list<Studentas>& grupe, std::chrono::duration<double>& SortingTime, std::chrono::duration<double>& FileEnterTime) {
+void SkaitytiIsFailo(std::string failoVardas, std::list<Studentas>& grupe, std::chrono::duration<double>& SortingAndFileTime) {
     std::ifstream failas(failoVardas);
     if (!failas.is_open()) {
         std::cerr << "Nepavyko atidaryti failo." << std::endl;
@@ -8,7 +8,6 @@ void SkaitytiIsFailo(std::string failoVardas, std::list<Studentas>& grupe, std::
     }
     std::string header;
     getline(failas, header);
-
     while (failas) {
         if (!failas.eof()) {
             std::string eilute;
@@ -33,7 +32,7 @@ void SkaitytiIsFailo(std::string failoVardas, std::list<Studentas>& grupe, std::
                     laikPaz.push_back(pazymys);
                 }
                 else {
-                    std::cerr << "Pazymis sugadintas\n";
+                    std::cerr << "Pazymio nera\n";
                 }
             }
 
@@ -45,46 +44,29 @@ void SkaitytiIsFailo(std::string failoVardas, std::list<Studentas>& grupe, std::
                 grupe.push_back(tempStudent);
                 cout << tempStudent;
 
+
+                // Savo varianto optimizavimas stipriai pagerino duomenu rusiavima. 
+                // studentai5000.txt atliktas per 11 sekundziu vs. mano seno kodo 897 sekundiu.
+
                 std::vector<Studentas> MinStudentai;
                 std::vector<Studentas> MaxStudentai;
-                auto SortingStart = std::chrono::high_resolution_clock::now();
-                for (auto& tempStudent : grupe) {
-                    if (tempStudent.GetGalutinis() < 5.0) {
-                        MinStudentai.push_back(tempStudent);
-                    }
-                    else {
-                        MaxStudentai.push_back(tempStudent);
-                    }
-                }
-                auto SortingEnd = std::chrono::high_resolution_clock::now();
-                SortingTime += SortingEnd - SortingStart;
-
-                auto FileEnterStart = std::chrono::high_resolution_clock::now();
-                std::ofstream MinStudentaiFile("MinStudentai.txt");
-                for (const auto& tempStudent : MinStudentai) {
+                auto SortingAndFileStart = std::chrono::high_resolution_clock::now();
+                if (tempStudent.GetGalutinis() < 5.0) {
+                    std::ofstream MinStudentaiFile("MinStudentai.txt", std::ios::app);
                     MinStudentaiFile << tempStudent;
+                    MinStudentaiFile.close();
                 }
-                MinStudentaiFile.close();
-
-                std::ofstream MaxStudentaiFile("MaxStudentai.txt");
-                for (const auto& tempStudent : MaxStudentai) {
+                else {
+                    std::ofstream MaxStudentaiFile("MaxStudentai.txt", std::ios::app);
                     MaxStudentaiFile << tempStudent;
+                    MaxStudentaiFile.close();
                 }
-                MaxStudentaiFile.close();
 
-                std::ofstream OpenResult("Res.txt");
-                for (auto& tempStudent : grupe) {
-                    OpenResult << tempStudent;
-                }
-                OpenResult.close();
+                auto SortingAndFileEnd = std::chrono::high_resolution_clock::now();
+                SortingAndFileTime += SortingAndFileEnd - SortingAndFileStart;
 
-                auto FileEnterEnd = std::chrono::high_resolution_clock::now();
-                FileEnterTime += FileEnterEnd - FileEnterStart;
 
             }
-
-
-
         }
         else {
             break;
