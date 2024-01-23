@@ -40,7 +40,7 @@ int main() {
 
     }
     else {
-        std::cout << "Automatiškai generuoti studentus? (1 = Y/ 2 = N): ";
+        std::cout << "Automatiskai generuoti studentus? (1 = Y/ 2 = N): ";
         int Pasrk2;
         obj.ExptSkaiciuChecker(Pasrk2, 2);
 
