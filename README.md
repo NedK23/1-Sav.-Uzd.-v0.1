@@ -1,4 +1,4 @@
-**1-SysProg.-Sav.-Uzd-v1.0-release**
+**1-SysProg.-Sav.-Uzd-main-v1.0**
 
 Atlikta pirma užduotis, nuo v0.1 iki v1.0;
 
