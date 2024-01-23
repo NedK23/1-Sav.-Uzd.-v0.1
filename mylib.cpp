@@ -49,11 +49,11 @@ std::istream& operator>>(std::istream& in, Studentas& a) {
     a.Vidurkis();
     return in;
 }
-void Studentas::OutputToUserFile(const std::string& fileName, const std::list<Studentas>& studentai) {
+void Studentas::OutputUserFile(const std::string& fileName, const std::list<Studentas>& studentai) {
     std::ofstream userFile(fileName + ".txt", std::ios::app);
 
     if (!userFile.is_open()) {
-        std::cerr << "Unable to open file: " << fileName << ".txt" << std::endl;
+        std::cerr << "Negalima atidaryti failo: " << fileName << ".txt" << std::endl;
         return;
     }
     for (const auto& studentas : studentai) {
@@ -84,37 +84,26 @@ void Studentas::GeneruotiStudenta(Studentas& studentas) {
     studentas.SkaiciuotiGalutiniBala();
     studentai.push_back(studentas);
 
+    std::ofstream OpenResult("Res.txt", std::ios::app);
+    OpenResult << studentas;
+    OpenResult.close();
+
+    std::ofstream MinStudentaiFile("MinStudentai.txt", std::ios::app);
+    std::ofstream MaxStudentaiFile("MaxStudentai.txt", std::ios::app);
+
     std::vector<Studentas> MinStudentai;
     std::vector<Studentas> MaxStudentai;
 
     for (auto& studentas : studentai) {
         if (studentas.GetGalutinis() < 5.0) {
-            MinStudentai.push_back(studentas);
+            MinStudentaiFile << studentas;
+            MinStudentaiFile.close();
         }
         else {
-            MaxStudentai.push_back(studentas);
+            MaxStudentaiFile << studentas;
+            MaxStudentaiFile.close();
         }
     }
-
-    std::ofstream MinStudentaiFile("MinStudentai.txt", std::ios::app);
-    for (const auto& studentas : MinStudentai) {
-        MinStudentaiFile << studentas;
-    }
-    MinStudentaiFile.close();
-
-    std::ofstream MaxStudentaiFile("MaxStudentai.txt", std::ios::app);
-    for (const auto& studentas : MaxStudentai) {
-        MaxStudentaiFile << studentas;
-    }
-    MaxStudentaiFile.close();
-
-    std::ofstream OpenResult("Res.txt", std::ios::app);
-    for (auto& studentas : studentai) {
-        OpenResult << studentas;
-    }
-    OpenResult.close();
-
-
 }
 
 int Studentas::ExptSkaiciuChecker(int& Pasirinkimas, int Skaicius) {

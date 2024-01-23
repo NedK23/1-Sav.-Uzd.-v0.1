@@ -58,7 +58,7 @@ public:
 
 	void DuomenųĮvedimas(int namuDarbųSkaicius, bool generuotiSkc);
 
-	void OutputToUserFile(const std::string& fileName, const std::list<Studentas>& studentai);
+	void OutputUserFile(const std::string& fileName, const std::list<Studentas>& studentai);
 
 	void SkaiciuotiGalutiniBala();
 
