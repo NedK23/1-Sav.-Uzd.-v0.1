@@ -56,11 +56,10 @@ int main() {
             auto GenStart = std::chrono::high_resolution_clock::now();
             studentai.emplace_back();
 
-            // In the for loop
             for (int i = 0; i < nrStudentu; i++) {
-                Studentas studentas;  // Create a new student object for each iteration
+                Studentas studentas;
                 obj.GeneruotiStudenta(studentas);
-                studentai.push_back(studentas);  // Add the generated student to the list
+                studentai.push_back(studentas);
             }
 
             auto GenEnd = std::chrono::high_resolution_clock::now();
@@ -92,14 +91,15 @@ int main() {
             int studentuSkaicius;
             std::cout << "Iveskite studentu skaiciu: ";
             std::cin >> studentuSkaicius;
+            
+            for (int i = 0; i < studentuSkaicius; i++) {
+                studentai.push_back(Studentas());
+                for (auto& studentas : studentai) {
+                    studentas.DuomenųĮvedimas(namuDarbuSkaicius, true);
+                }
 
-            studentai.push_back(Studentas());
-
-            for (auto& studentas : studentai) {
-                studentas.DuomenųĮvedimas(namuDarbuSkaicius, true);
             }
         }
-
         std::cout
             << "Kaip skaiciuoti galutini bala? - (vidurkis - 1, mediana - 2): ";
         int SkaiciavimoPsr;
@@ -138,6 +138,6 @@ int main() {
     auto end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> totalTime = end - start;
     std::cout << "Visas programos veikimo laikas: " << totalTime.count() << " seconds" << std::endl;
-
+    system("pause");
     return 0;
 }

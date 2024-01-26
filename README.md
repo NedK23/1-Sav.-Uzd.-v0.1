@@ -1,4 +1,4 @@
-**1-SysProg.-Sav.-Uzd-main-v1.0**
+**1-SysProg.-Sav.-Uzd-v1.0-release**
 
 Atlikta pirma užduotis, nuo v0.1 iki v1.0;
 
@@ -22,6 +22,12 @@ Pagrindinių funkcijų Instrukcija:
 3.1. Pasirinkite kiek iš viso namų darbų turės studentai.
 3.2. Pasirinkite studentų skaičių.
 3.3. Užpildykite namų darbus ranka, arba atsitiktinai sugeneruokite balus.
+
+Makefile naudojimas:
+1. Ijunkite URCT console (pvz. MSYS32 URCT64)
+2. Einate į Makefile directorija.
+3. konsolėje įrašykite 'make'
+4. directorijoje dabar tūri būti main.exe failas.
 
 Versijos pakeitimai:
 v0.1:
