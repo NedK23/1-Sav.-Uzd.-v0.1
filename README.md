@@ -1,4 +1,4 @@
-**1-SysProg.-Sav.-Uzd-v1.0-release**
+**1-SysProg.-Sav.-Uzd-v1.0.1-release**
 
 Atlikta pirma užduotis, nuo v0.1 iki v1.0;
 
@@ -42,6 +42,8 @@ Atlikta Vectorių vs. list tipo analizė, txt faile "LaikoAnalize.txt".
 v1.0: 
 Skaitimo iš failų optimizacija.
 Parengtas Makefile.
+v1.0.1:
+Aptvarkymas.
 
 
 
